@@ -1,6 +1,7 @@
 {
     "require": {
         "slim/slim": "2.*",
+        "twig/twig": "1.13.*@dev",
         "gabordemooij/redbean": "dev-master",
         "kriswallsmith/assetic": "1.1.*@dev"
     }
