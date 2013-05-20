@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>照片</title>
+{% include 'block/assets.html' %}
+</head>
+<body>
+<div class="container">
+  {% include 'block/header.html' %}
+
+  <div class="row">
+    <div class="span6 offset3">
+      <form class="form-horizontal" action='' method="POST">
+        <fieldset>
+          <div id="legend">
+            <legend>新用户注册</legend>
+          </div>
+
+          <div class="control-group">
+            <label class="control-label" for="username">用户名</label>
+            <div class="controls">
+              <input type="text" id="username" name="username" placeholder="" class="input-xlarge">
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label class="control-label" for="email">邮箱</label>
+            <div class="controls">
+              <input type="text" id="email" name="email" placeholder="" class="input-xlarge">
+            </div>
+          </div>
+       
+          <div class="control-group">
+            <label class="control-label" for="password">密码</label>
+            <div class="controls">
+              <input type="password" id="password" name="password" placeholder="" class="input-xlarge">
+            </div>
+          </div>
+       
+       
+          <div class="control-group">
+            <div class="controls">
+              <button class="btn btn-success">注册</button>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+     </div>
+    </div>
+
+  {% include 'block/footer.html' %}
+  <script type="text/javascript">
+    $(function() {
+        $('#username').focus();
+    });
+  </script>
+</div>
+</body>
+</html>
