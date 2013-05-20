@@ -1,8 +1,9 @@
 {
     "require": {
         "slim/slim": "2.*",
+        "slim/extras": "dev-feature/no_static_views",
         "twig/twig": "1.13.*@dev",
         "gabordemooij/redbean": "dev-master",
-        "kriswallsmith/assetic": "1.1.*@dev"
+        "codeguy/upload": "*"
     }
 }
