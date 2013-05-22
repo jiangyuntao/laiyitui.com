@@ -2,43 +2,34 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>来一腿_美腿照片</title>
-<link media="all" rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css" />
-<link media="all" rel="stylesheet" href="assets/css/bootstrap-responsive.min.css" type="text/css" />
-<script src="assets/js/jquery.min.js" type="text/javascript"></script>
-<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+<title>上传图片_来一腿</title>
+{% include 'block/assets.html' %}
 </head>
 <body>
 <div class="container">
-  <div class="masthead">
-    <ul class="nav nav-pills pull-right">
-      <li><a href="#">上传图片</a></li>
-      <li><a href="#">登录 / 注册</a></li>
-    </ul>
-    <h3 class="muted">来一腿</h3>
-  </div>
+  {% include 'block/header.html' %}
 
-  <div class="alert alert-block">
-    <h4>NOT SAFE FOR WORK
-      <a href="#" class="btn pull-right">进入</a>
-    </h4>
-    <p>确保你周围没有女同事，确保你老板不在你身后</p>
-  </div>
-
-  <div class="footer">
-    <div class="row-fluid">
-      <div class="span12">
-        <div class="span8">
-          <a href="/about">关于我们</a>    
-          <a href="/">免责声明</a>    
-          <a href="/ad">广告合作</a>
-        </div>
-        <div class="span4">
-          <p class="muted pull-right">&copy; 2013 来一腿. 保留所有权利</p>
-        </div>
+  <div class="row">
+    <div class="span6 offset3">
+      <div class="nav nav-tabs">
+        <li class="active"><a href="#">粘贴图片网址</a></li>
+        <li><a href="#">从本地上传</a></li>
       </div>
+      <form method="POST" action="">
+        <div class="input-append">
+          <input type="text" class="span5" name="url" />
+          <input type="submit" class="btn" name="submit" value=" 抓取图片 " />
+        </div>
+      </form>
     </div>
   </div>
+
+  {% include 'block/footer.html' %}
 </div>
+<script type="text/javascript">
+  $(function() {
+      $('input[name="url"]').focus();
+  });
+</script>
 </body>
 </html>
