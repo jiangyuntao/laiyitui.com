@@ -4,6 +4,7 @@
         "slim/extras": "dev-feature/no_static_views",
         "twig/twig": "1.13.*@dev",
         "gabordemooij/redbean": "dev-master",
-        "codeguy/upload": "*"
+        "codeguy/upload": "*",
+        "smottt/wideimage": "dev-master"
     }
 }

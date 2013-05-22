@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "893534f7c091a47ae9c6adcab9dd0669",
+    "hash": "00fde37e3a95920875ba747d327c8fa8",
     "packages": [
         {
             "name": "codeguy/upload",
@@ -186,6 +186,35 @@
             "time": "2012-12-13 02:15:50"
         },
         {
+            "name": "smottt/wideimage",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/smottt/WideImage.git",
+                "reference": "9d0a3a14460c7b188fc3cd9c0ec7539489a84ddc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/smottt/WideImage/zipball/9d0a3a14460c7b188fc3cd9c0ec7539489a84ddc",
+                "reference": "9d0a3a14460c7b188fc3cd9c0ec7539489a84ddc",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "WideImage": "lib/"
+                }
+            },
+            "notification-url": "http://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0",
+                "LGPL-2.1"
+            ],
+            "description": "An open-source PHP library for image manipulation. (With namespaces, PHP 5.3+)",
+            "homepage": "http://wideimage.sourceforge.net",
+            "time": "2012-09-03 11:14:31"
+        },
+        {
             "name": "twig/twig",
             "version": "dev-master",
             "source": {
@@ -245,7 +274,8 @@
     "stability-flags": {
         "slim/extras": 20,
         "twig/twig": 20,
-        "gabordemooij/redbean": 20
+        "gabordemooij/redbean": 20,
+        "smottt/wideimage": 20
     },
     "platform": [
 
