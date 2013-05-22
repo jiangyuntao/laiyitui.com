@@ -3,7 +3,7 @@
 -- Server version                :5.5.16 - MySQL Community Server (GPL)
 -- Server OS                     :Win32
 -- HeidiSQL 版本                   :7.0.0.4246
--- Created                       :2013-05-20 17:32:18
+-- Created                       :2013-05-22 17:36:08
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -30,11 +30,12 @@ DELETE FROM `comment`;
 /*!40000 ALTER TABLE `comment` ENABLE KEYS */;
 
 
--- Dumping structure for table laiyitui_com.picture
-DROP TABLE IF EXISTS `picture`;
-CREATE TABLE IF NOT EXISTS `picture` (
+-- Dumping structure for table laiyitui_com.image
+DROP TABLE IF EXISTS `image`;
+CREATE TABLE IF NOT EXISTS `image` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `picture` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `thumb` varchar(255) NOT NULL,
   `viewed` int(10) unsigned NOT NULL,
   `stared` int(10) unsigned NOT NULL,
   `created_at` int(10) unsigned NOT NULL,
@@ -45,10 +46,10 @@ CREATE TABLE IF NOT EXISTS `picture` (
   KEY `stared` (`stared`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- Dumping data for table laiyitui_com.picture: 0 rows
-DELETE FROM `picture`;
-/*!40000 ALTER TABLE `picture` DISABLE KEYS */;
-/*!40000 ALTER TABLE `picture` ENABLE KEYS */;
+-- Dumping data for table laiyitui_com.image: 0 rows
+DELETE FROM `image`;
+/*!40000 ALTER TABLE `image` DISABLE KEYS */;
+/*!40000 ALTER TABLE `image` ENABLE KEYS */;
 
 
 -- Dumping structure for table laiyitui_com.user
@@ -64,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
--- Dumping data for table laiyitui_com.user: 0 rows
+-- Dumping data for table laiyitui_com.user: 1 rows
 DELETE FROM `user`;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` (`id`, `username`, `email`, `password`, `created_at`, `updated_at`, `deleted_at`) VALUES
