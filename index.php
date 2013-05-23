@@ -26,10 +26,31 @@ $app->get('/', function() use ($app) {
 // 图片浏览
 // function explore
 $app->get('/explore(/:way(/:page))', function($way = 'latest', $page = 1) use ($app) {
+    switch ($way) {
+    case 'latest':
+        $orderby = 'id';
+        break;
+    case 'hot':
+        $orderby = 'viewed';
+        break;
+    case 'controversial':
+        $orderby = 'stared';
+        break;
+    }
+
+    $limit = 12;
+    $offset = $limit * ($page - 1);
+
+    $images = R::findAll('image', 'order by :orderby desc limit :offset, :limit', array(
+        ':orderby' => $orderby,
+        ':offset' => $offset,
+        ':limit' => $limit
+    ));
+
     $data = array(
-        'latest_url' => $app->urlFor('explore', array('way' => 'latest')),
-        'hot_url' => $app->urlFor('explore', array('way' => 'hot')),
-        'controversial_url' => $app->urlFor('explore', array('way' => 'controversial')),
+        'images' => $images,
+        'offset' => $offset,
+        'limit' => $limit,
         'current' => $way,
         'auth' => auth($app)
     );
@@ -39,6 +60,15 @@ $app->get('/explore(/:way(/:page))', function($way = 'latest', $page = 1) use ($
 // 查看图片
 // function view
 $app->get('/view/:id', function($id) use ($app) {
+    $image = R::findOne('image', 'id=:id', array(
+        ':id' => $id
+    ));
+
+    $data = array(
+        'image' => $image,
+        'auth' => auth($app)
+    );
+    $app->render('view.html', $data);
 })->name('view');
 
 // 留言
@@ -67,6 +97,11 @@ $app->map('/upload', function() use ($app) {
 
         $image = R::dispense('image');
         $image->image = $images['image'];
+        $image->thumb = $images['thumb'];
+        $image->created_at = $image->updated_at = time();
+        if ($id = R::store($image)) {
+            $app->redirect($app->urlFor('view', array('id' => $id)));
+        }
     }
 })->via('GET', 'POST');
 
@@ -96,7 +131,7 @@ $app->map('/signin', function() use ($app) {
                     'username' => $user->username,
                     'email' => $user->email
                 );
-                setauthcookie($app, $auth);
+                set_auth_cookie($app, $auth);
                 $app->redirect('/explore');
             } else {
                 $app->redirect('/signin');
@@ -132,7 +167,7 @@ $app->map('/signup', function() use ($app) {
                 'username' => $user->username,
                 'email' => $user->email
             );
-            setauthcookie($app, $auth);
+            set_auth_cookie($app, $auth);
             $app->redirect('/explore');
         }
     }
@@ -160,7 +195,7 @@ function dump($var = '') {
 }
 
 // 登录
-function setauthcookie($app = null, $auth = array()) {
+function set_auth_cookie($app = null, $auth = array()) {
     return $app->setEncryptedCookie('auth', serialize($auth));
 }
 
@@ -202,7 +237,7 @@ function scratch_image($url) {
     // 删除临时文件
     unlink($tmp_file_name);
 
-    return array($image_file, $thumb_file);
+    return array('image' => $image_file, 'thumb' => $thumb_file);
 }
 
 // 通过 mime 获取文件扩展名
