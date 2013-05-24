@@ -38,7 +38,7 @@ $app->get('/explore(/:way(/:page))', function($way = 'latest', $page = 1) use ($
         break;
     }
 
-    $limit = 12;
+    $limit = 120;
     $offset = $limit * ($page - 1);
 
     $images = R::findAll('image', 'order by :orderby desc limit :offset, :limit', array(
